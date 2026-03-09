@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BMI Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>BMI Calculator</h1>
+
+<input type="text" id="fname" placeholder="First Name">
+<input type="text" id="lname" placeholder="Last Name">
+
+<div class="row">
+<input type="number" id="age" placeholder="Age">
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (m)">
+</div>
+
+<button onclick="calculateBMI()">Calculate</button>
+
+</div>
+
+<script>
+
+function calculateBMI(){
+
+let fname = document.getElementById("fname").value;
+let lname = document.getElementById("lname").value;
+let age = document.getElementById("age").value;
+let weight = document.getElementById("weight").value;
+let height = document.getElementById("height").value;
+
+let bmi = weight/(height*height);
+bmi = bmi.toFixed(2);
+
+let status="";
+
+if(bmi<18.5) status="Underweight";
+else if(bmi<25) status="Normal";
+else if(bmi<30) status="Overweight";
+else status="Obese";
+
+localStorage.setItem("fname",fname);
+localStorage.setItem("lname",lname);
+localStorage.setItem("age",age);
+localStorage.setItem("bmi",bmi);
+localStorage.setItem("status",status);
+
+window.location="result.html";
+
+}
+
+</script>
+
+</body>
+</html>
